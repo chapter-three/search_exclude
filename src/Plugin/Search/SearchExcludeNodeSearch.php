@@ -32,6 +32,10 @@ class SearchExcludeNodeSearch extends NodeSearch {
    * {@inheritdoc}
    */
   public function indexStatus() {
+    if (!count($this->configuration['excluded_bundles'])) {
+      return parent::indexStatus();
+    }
+
     $total = $this->database->query('SELECT COUNT(*) FROM {node} WHERE type NOT IN (:excluded_bundles[])', array(':excluded_bundles[]' => $this->configuration['excluded_bundles']))->fetchField();
     $remaining = $this->database->query("SELECT COUNT(DISTINCT n.nid) FROM {node} n LEFT JOIN {search_dataset} sd ON sd.sid = n.nid AND sd.type = :type WHERE (sd.sid IS NULL OR sd.reindex <> 0) AND n.type NOT IN (:excluded_bundles[])", array(':type' => $this->getPluginId(), ':excluded_bundles[]' => $this->configuration['excluded_bundles']))->fetchField();
 
