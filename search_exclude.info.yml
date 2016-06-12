@@ -1,0 +1,7 @@
+name: 'Search Exclude'
+type: module
+description: 'Exclude node bundles from node search.'
+version: VERSION
+core: 8.x
+package: Search
+configure: entity.search_page.collection
