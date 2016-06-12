@@ -50,6 +50,18 @@ class SearchExcludeNodeSearch extends NodeSearch {
   /**
    * {@inheritdoc}
    */
+  public function searchFormAlter(array &$form, FormStateInterface $form_state) {
+    parent::searchFormAlter($form, $form_state);
+
+    // Remove excluded bundles from search form.
+    $options = $form['advanced']['types-fieldset']['type']['#options'];
+    $bundles = array_diff_key($options, $this->configuration['excluded_bundles']);
+    $form['advanced']['types-fieldset']['type']['#options'] = $bundles;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
 
