@@ -1,6 +1,6 @@
 name: 'Search Exclude'
 type: module
-description: 'Exclude node bundles from node search.'
+description: 'Exclude content types from node search.'
 version: VERSION
 core: 8.x
 package: Search

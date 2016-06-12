@@ -75,12 +75,12 @@ class SearchExcludeNodeSearch extends NodeSearch {
 
     $form['exclude_bundles'] = [
       '#type' => 'details',
-      '#title' => t('Exclude bundles'),
+      '#title' => t('Exclude content types'),
       '#open' => TRUE,
     ];
 
     $form['exclude_bundles']['info'] = [
-      '#markup' => '<p><em>Select the bundles to exclude from the search index.</em></p>'
+      '#markup' => '<p><em>Select the content types to exclude from the search index.</em></p>'
     ];
 
     $form['exclude_bundles']['excluded_bundles'] = [
